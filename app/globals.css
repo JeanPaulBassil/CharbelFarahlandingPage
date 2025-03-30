@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adjust for fixed navbar height */
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b91c1c;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
+}
+
+/* Scrollbar for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #b91c1c #111;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: rgba(220, 38, 38, 0.3);
+  color: white;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Scroll animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.scroll-animation {
+  opacity: 0;
+}
+
+.scroll-animation.visible {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, #b91c1c, #dc2626);
+  background-size: 200% auto;
+  width: 0%;
+  animation: gradient 2s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Red gradient text */
+.text-gradient-red {
+  background: linear-gradient(to right, #dc2626, #991b1b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Custom shadows */
+.red-glow {
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
+}
+
+/* Smooth reveal animation on scroll */
+.reveal {
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+
+.reveal.active.fade-bottom {
+  transform: translateY(0);
+}
+
+.reveal.fade-bottom {
+  transform: translateY(50px);
+} 
