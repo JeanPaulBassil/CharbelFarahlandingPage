@@ -65,44 +65,46 @@ export default function Home() {
       {/* Hero Section */}
       <motion.section
         variants={staggerContainer}
-        className="flex flex-col-reverse md:flex-row items-center justify-between gap-2 md:gap-10 py-2 md:py-20"
+        className="flex flex-col-reverse md:flex-row items-center justify-between gap-2 md:gap-10 py-2 md:py-20 relative"
       >
-        <div className="flex-1 space-y-2 md:space-y-6 w-full">
+        <div className="flex-1 space-y-2 md:space-y-6 w-full relative z-10">
           <motion.div
-            className="inline-block px-4 py-1 bg-red-950/30 rounded-full border border-red-800/30 mb-2"
+            className="inline-block px-6 py-2 bg-gradient-to-r from-red-950/50 to-red-900/30 rounded-full border border-red-800/30 mb-2 backdrop-blur-sm"
             variants={fadeIn}
             custom={0}
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(185, 28, 28, 0.4)" }}
           >
-            <p className="text-sm text-red-500 font-medium tracking-wider">
+            <p className="text-sm text-red-400 font-medium tracking-wider">
               WORLD-CLASS MMA TRAINING
             </p>
           </motion.div>
 
           <motion.h1
-            className="text-4xl md:text-5xl font-extrabold text-white leading-tight"
+            className="text-5xl md:text-7xl font-extrabold text-white leading-tight"
             variants={fadeIn}
             custom={1}
           >
             Train With <br />
             <motion.span
-              className="bg-gradient-to-r from-red-500 to-red-700 text-transparent bg-clip-text"
+              className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 text-transparent bg-clip-text"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
+              whileHover={{ scale: 1.02 }}
             >
               Charbel Farah
             </motion.span>
           </motion.h1>
 
           <motion.div
-            className="h-1 w-24 bg-gradient-to-r from-red-600 to-red-800 rounded-full my-4"
+            className="h-1 w-32 bg-gradient-to-r from-red-500 via-red-600 to-red-700 rounded-full my-4"
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 96, opacity: 1 }}
+            animate={{ width: 128, opacity: 1 }}
             transition={{ delay: 1, duration: 0.8 }}
           />
 
           <motion.p
-            className={subtitle({ class: "max-w-md text-white/70" })}
+            className={subtitle({ class: "max-w-md text-white/80 text-lg md:text-xl" })}
             variants={fadeIn}
             custom={2}
           >
@@ -112,17 +114,21 @@ export default function Home() {
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap gap-3 md:gap-4 pt-4 md:pt-6"
+            className="flex flex-wrap gap-4 md:gap-6 pt-4 md:pt-6"
             variants={fadeIn}
             custom={3}
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -2 }} 
+              whileTap={{ scale: 0.95 }}
+            >
               <Link
                 className={buttonStyles({
                   color: "danger",
-                  radius: "sm",
+                  radius: "lg",
                   variant: "shadow",
                   size: "lg",
+                  class: "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 shadow-lg shadow-red-900/30",
                 })}
                 href="#contact"
                 onClick={scrollToSection(contactRef)}
@@ -130,13 +136,16 @@ export default function Home() {
                 BOOK A SESSION
               </Link>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -2 }} 
+              whileTap={{ scale: 0.95 }}
+            >
               <Link
                 className={buttonStyles({
                   variant: "bordered",
-                  radius: "sm",
+                  radius: "lg",
                   size: "lg",
-                  class: "border-red-800/50 text-white hover:bg-red-900/20",
+                  class: "border-red-600/50 text-white hover:bg-red-900/20 backdrop-blur-sm",
                 })}
                 href="#achievements"
                 onClick={scrollToSection(achievementsRef)}
@@ -147,7 +156,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="flex flex-wrap items-center gap-4 md:gap-8 pt-4 md:pt-8"
+            className="flex flex-wrap items-center gap-6 md:gap-10 pt-6 md:pt-10"
             variants={fadeIn}
             custom={4}
             initial={{ opacity: 0, y: 20 }}
@@ -159,39 +168,39 @@ export default function Home() {
                 icon: "mdi:medal",
                 count: "15+",
                 label: "Championships",
-                color: "text-yellow-500",
+                color: "text-yellow-400",
               },
               {
                 icon: "mdi:account-group",
                 count: "100+",
                 label: "Athletes Trained",
-                color: "text-blue-500",
+                color: "text-blue-400",
               },
               {
                 icon: "mdi:star",
                 count: "5+",
                 label: "Disciplines",
-                color: "text-amber-500",
+                color: "text-amber-400",
               },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="flex items-center gap-2"
+                className="flex items-center gap-3 bg-black/30 p-3 rounded-lg backdrop-blur-sm border border-white/5"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -5, scale: 1.02 }}
               >
                 <motion.div
-                  className="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center"
+                  className="w-12 h-12 rounded-full bg-gradient-to-br from-red-900/50 to-red-800/30 flex items-center justify-center border border-red-700/30"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Icon icon={stat.icon} className={`text-xl ${stat.color}`} />
+                  <Icon icon={stat.icon} className={`text-2xl ${stat.color}`} />
                 </motion.div>
                 <div>
-                  <p className="text-xl font-bold text-white">{stat.count}</p>
-                  <p className="text-xs text-white/60">{stat.label}</p>
+                  <p className="text-2xl font-bold text-white">{stat.count}</p>
+                  <p className="text-sm text-white/70">{stat.label}</p>
                 </div>
               </motion.div>
             ))}
@@ -199,12 +208,13 @@ export default function Home() {
         </div>
 
         <motion.div
-          className="w-full md:flex-1 relative h-[300px] md:h-[550px] bg-gradient-to-br from-red-950 to-black rounded-lg overflow-hidden shadow-2xl border border-red-900/50 mt-1 md:mt-0"
+          className="w-full md:flex-1 relative h-[300px] md:h-[550px] bg-gradient-to-br from-red-950 to-black rounded-2xl overflow-hidden shadow-2xl border border-red-900/50 mt-1 md:mt-0"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
           whileHover={{
             boxShadow: "0 25px 50px -12px rgba(185, 28, 28, 0.25)",
+            scale: 1.02,
           }}
         >
           {/* Fighter image with parallax effect */}
@@ -259,17 +269,17 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 1 }}
           ></motion.div>
           <motion.div
-            className="absolute bottom-6 left-6 right-6"
+            className="absolute bottom-8 left-8 right-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.2 }}
           >
             <motion.div
-              className="flex items-center gap-3"
+              className="flex items-center gap-4 bg-black/40 p-4 rounded-lg backdrop-blur-sm border border-white/5"
               whileHover={{ x: 5 }}
             >
               <motion.div
-                className="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center shadow-lg"
+                className="w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center shadow-lg"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 animate={{
                   boxShadow: [
@@ -283,11 +293,11 @@ export default function Home() {
                   duration: 2,
                 }}
               >
-                <Icon icon="mdi:fire" className="text-xl text-white" />
+                <Icon icon="mdi:fire" className="text-2xl text-white" />
               </motion.div>
               <div>
-                <p className="text-sm text-white/70">FEATURED ACHIEVEMENT</p>
-                <p className="text-white font-semibold">
+                <p className="text-sm text-red-400 font-medium">FEATURED ACHIEVEMENT</p>
+                <p className="text-xl text-white font-semibold">
                   Asian MMA Champion 2022
                 </p>
               </div>
@@ -300,30 +310,36 @@ export default function Home() {
       <motion.section
         ref={aboutRef}
         id="about"
-        className="py-8 md:py-20 bg-gradient-to-r from-black to-black/90 rounded-xl p-4 md:p-10 shadow-2xl border border-red-900/30 mx-0 md:mx-0"
+        className="py-8 md:py-20 bg-gradient-to-r from-black via-black/95 to-black rounded-2xl p-4 md:p-10 shadow-2xl border border-red-900/30 mx-0 md:mx-0 relative overflow-hidden"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0.2 }}
       >
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+        </div>
+
         <motion.div
-          className="flex flex-col items-center mb-4 md:mb-10"
+          className="flex flex-col items-center mb-4 md:mb-10 relative z-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-block px-4 py-1 bg-red-950/30 rounded-full border border-red-800/30 mb-3"
-            whileHover={{ scale: 1.05 }}
+            className="inline-block px-6 py-2 bg-gradient-to-r from-red-950/50 to-red-900/30 rounded-full border border-red-800/30 mb-3 backdrop-blur-sm"
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(185, 28, 28, 0.4)" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <p className="text-sm text-red-500 font-medium tracking-wider">
+            <p className="text-sm text-red-400 font-medium tracking-wider">
               ABOUT CHARBEL
             </p>
           </motion.div>
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-white text-center"
+            className="text-4xl md:text-5xl font-bold text-white text-center bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -333,7 +349,7 @@ export default function Home() {
           </motion.h2>
         </motion.div>
 
-        <div className="flex flex-col md:flex-row gap-4 md:gap-14 items-center">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-14 items-center relative z-10">
           <motion.div
             className="flex-1 space-y-5"
             initial={{ opacity: 0, x: -50 }}
@@ -341,20 +357,20 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <p className="text-base md:text-lg text-white/80">
+            <p className="text-base md:text-lg text-white/90 leading-relaxed">
               With over a decade of experience in combat sports, I&apos;ve
               earned championships across multiple disciplines and competed at
               the highest levels internationally. My approach combines technical
               excellence with mental fortitude, helping athletes reach their
               full potential.
             </p>
-            <p className="text-base md:text-lg text-white/80">
+            <p className="text-base md:text-lg text-white/90 leading-relaxed">
               Whether you&apos;re a beginner looking to learn self-defense or an
               experienced fighter aiming for championship glory, my training
               methods are tailored to your specific goals and abilities.
             </p>
 
-            <div className="pt-2 md:pt-4">
+            <div className="pt-2 md:pt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
                 "Personalized training programs",
                 "Competition preparation",
@@ -363,20 +379,21 @@ export default function Home() {
               ].map((item, index) => (
                 <motion.div
                   key={item}
-                  className="flex gap-3 items-center mt-2"
+                  className="flex gap-3 items-center p-3 bg-black/30 rounded-lg backdrop-blur-sm border border-white/5 hover:border-red-900/30 transition-all"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                   viewport={{ once: true }}
-                  whileHover={{ x: 5 }}
+                  whileHover={{ x: 5, scale: 1.02 }}
                 >
                   <motion.div
+                    className="w-8 h-8 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center"
                     whileHover={{ scale: 1.2, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
                   >
                     <Icon
                       icon="mdi:check-circle"
-                      className="text-red-500 text-xl"
+                      className="text-white text-lg"
                     />
                   </motion.div>
                   <p className="text-white text-sm md:text-base">{item}</p>
@@ -391,7 +408,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <div className="grid grid-cols-2 gap-2 md:gap-4 w-full">
+            <div className="grid grid-cols-2 gap-3 md:gap-4 w-full">
               {[
                 { number: "10+", label: "Years Experience" },
                 { number: "15+", label: "Championships" },
@@ -400,18 +417,19 @@ export default function Home() {
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
-                  className="bg-gradient-to-br from-red-900/40 to-red-950/40 p-4 md:p-6 rounded-lg text-center border border-red-800/30 hover:border-red-600/50 transition-all"
+                  className="bg-gradient-to-br from-red-900/40 to-red-950/40 p-4 md:p-6 rounded-xl text-center border border-red-800/30 hover:border-red-600/50 transition-all backdrop-blur-sm"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{
                     y: -5,
+                    scale: 1.02,
                     boxShadow: "0 10px 25px -5px rgba(155, 28, 28, 0.2)",
                   }}
                 >
                   <motion.p
-                    className="text-3xl md:text-5xl font-bold text-white"
+                    className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.3, delay: 0.9 + index * 0.1 }}
@@ -419,7 +437,7 @@ export default function Home() {
                   >
                     {stat.number}
                   </motion.p>
-                  <p className="text-white/70 text-xs md:text-sm mt-1">
+                  <p className="text-white/70 text-sm md:text-base mt-1">
                     {stat.label}
                   </p>
                 </motion.div>
@@ -433,30 +451,36 @@ export default function Home() {
       <motion.section
         ref={achievementsRef}
         id="achievements"
-        className="py-8 md:py-20"
+        className="py-8 md:py-20 relative overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true, amount: 0.2 }}
       >
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -left-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+        </div>
+
         <motion.div
-          className="flex flex-col items-center mb-4 md:mb-10"
+          className="flex flex-col items-center mb-4 md:mb-10 relative z-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-block px-4 py-1 bg-red-950/30 rounded-full border border-red-800/30 mb-3"
-            whileHover={{ scale: 1.05 }}
+            className="inline-block px-6 py-2 bg-gradient-to-r from-red-950/50 to-red-900/30 rounded-full border border-red-800/30 mb-3 backdrop-blur-sm"
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(185, 28, 28, 0.4)" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <p className="text-sm text-red-500 font-medium tracking-wider">
+            <p className="text-sm text-red-400 font-medium tracking-wider">
               ACHIEVEMENTS
             </p>
           </motion.div>
           <motion.h2
-            className="text-4xl font-bold text-white text-center"
+            className="text-4xl md:text-5xl font-bold text-white text-center bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -466,7 +490,7 @@ export default function Home() {
           </motion.h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative z-10">
           {[
             {
               title: "MMA",
@@ -560,46 +584,47 @@ export default function Home() {
           ].map((category, categoryIndex) => (
             <motion.div
               key={category.title}
-              className="space-y-6"
+              className="space-y-6 bg-black/30 p-6 rounded-2xl backdrop-blur-sm border border-white/5 hover:border-red-900/30 transition-all"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 * categoryIndex }}
               viewport={{ once: true, amount: 0.1 }}
+              whileHover={{ scale: 1.02 }}
             >
               <motion.div
                 className="flex items-center gap-3"
                 whileHover={{ x: 5 }}
               >
                 <motion.div
-                  className="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center"
+                  className="w-12 h-12 rounded-full bg-gradient-to-br from-red-900/50 to-red-800/30 flex items-center justify-center border border-red-700/30"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Icon icon={category.icon} className="text-xl text-red-500" />
+                  <Icon icon={category.icon} className="text-2xl text-red-400" />
                 </motion.div>
-                <h3 className="text-xl font-bold text-red-500">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
                   {category.title}
                 </h3>
               </motion.div>
-              <ul className="space-y-1 md:space-y-3">
+              <ul className="space-y-3">
                 {category.achievements.map((achievement, index) => (
                   <motion.li
                     key={achievement.title}
-                    className="bg-black/20 p-3 md:p-4 rounded-lg flex items-center gap-3 md:gap-4 border border-red-900/20 hover:border-red-700/30 transition-all group"
+                    className="bg-black/40 p-4 rounded-xl flex items-center gap-4 border border-white/5 hover:border-red-900/30 transition-all group"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: 0.3 + 0.1 * index }}
                     viewport={{ once: true, amount: 0.1 }}
-                    whileHover={{ x: 5, backgroundColor: "rgba(0, 0, 0, 0.3)" }}
+                    whileHover={{ x: 5, scale: 1.02 }}
                   >
                     <motion.span
-                      className={`w-8 h-8 md:w-10 md:h-10 rounded-full ${
+                      className={`w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-lg group-hover:scale-110 transition-transform ${
                         achievement.medal === "G"
-                          ? "bg-gradient-to-br from-yellow-500 to-yellow-300 text-black"
+                          ? "bg-gradient-to-br from-yellow-400 to-yellow-600 text-black"
                           : achievement.medal === "S"
                             ? "bg-gradient-to-br from-gray-300 to-gray-100 text-black"
-                            : "bg-gradient-to-br from-amber-700 to-amber-500 text-white"
-                      } flex items-center justify-center font-bold shadow-lg group-hover:scale-110 transition-transform`}
+                            : "bg-gradient-to-br from-amber-600 to-amber-400 text-white"
+                      }`}
                       whileHover={{ scale: 1.2, rotate: 5 }}
                       whileTap={{ scale: 0.9 }}
                       animate={{
@@ -631,10 +656,10 @@ export default function Home() {
                       {achievement.medal}
                     </motion.span>
                     <div>
-                      <p className="font-medium text-white text-sm md:text-base">
+                      <p className="font-medium text-white text-base">
                         {achievement.title}
                       </p>
-                      <p className="text-xs md:text-sm text-white/60">
+                      <p className="text-sm text-white/60">
                         {achievement.subtitle}
                       </p>
                     </div>
@@ -650,30 +675,36 @@ export default function Home() {
       <motion.section
         ref={servicesRef}
         id="services"
-        className="py-8 md:py-20 bg-gradient-to-r from-red-950 to-black rounded-xl p-4 md:p-10 shadow-2xl mx-0 md:mx-0"
+        className="py-8 md:py-20 bg-gradient-to-r from-red-950 to-black rounded-2xl p-4 md:p-10 shadow-2xl mx-0 md:mx-0 relative overflow-hidden"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0.2 }}
       >
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+        </div>
+
         <motion.div
-          className="flex flex-col items-center mb-4 md:mb-10"
+          className="flex flex-col items-center mb-4 md:mb-10 relative z-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-block px-4 py-1 bg-red-950/30 rounded-full border border-red-800/30 mb-3"
-            whileHover={{ scale: 1.05 }}
+            className="inline-block px-6 py-2 bg-gradient-to-r from-red-950/50 to-red-900/30 rounded-full border border-red-800/30 mb-3 backdrop-blur-sm"
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(185, 28, 28, 0.4)" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <p className="text-sm text-red-500 font-medium tracking-wider">
+            <p className="text-sm text-red-400 font-medium tracking-wider">
               SERVICES
             </p>
           </motion.div>
           <motion.h2
-            className="text-4xl font-bold text-white text-center"
+            className="text-4xl md:text-5xl font-bold text-white text-center bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -682,7 +713,7 @@ export default function Home() {
             TRAINING PROGRAMS
           </motion.h2>
           <motion.p
-            className="text-center text-white/70 max-w-2xl mt-2 md:mt-4 px-2"
+            className="text-center text-white/80 max-w-2xl mt-2 md:mt-4 px-2 text-lg"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -693,7 +724,7 @@ export default function Home() {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 relative z-10">
           {[
             {
               icon: "mdi:sword-cross",
@@ -734,19 +765,20 @@ export default function Home() {
           ].map((service, index) => (
             <motion.div
               key={service.title}
-              className="bg-gradient-to-br from-black/60 to-black/40 rounded-lg p-4 md:p-8 border border-red-900/20 hover:border-red-600/50 hover:shadow-red-900/5 hover:shadow-lg transition-all group"
+              className="bg-gradient-to-br from-black/60 to-black/40 rounded-xl p-6 md:p-8 border border-red-900/20 hover:border-red-600/50 hover:shadow-red-900/5 hover:shadow-lg transition-all group backdrop-blur-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
               viewport={{ once: true, amount: 0.1 }}
               whileHover={{
                 y: -10,
+                scale: 1.02,
                 boxShadow: "0 20px 25px -5px rgba(155, 28, 28, 0.15)",
               }}
             >
               <div className="flex flex-col items-center md:items-start">
                 <motion.div
-                  className="mb-2 md:mb-6 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform"
+                  className="mb-4 md:mb-6 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-red-600 to-red-800 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                   animate={{
@@ -766,7 +798,7 @@ export default function Home() {
                   <Icon icon={service.icon} className="text-2xl md:text-3xl" />
                 </motion.div>
                 <motion.h3
-                  className="text-lg md:text-xl font-bold text-white mb-1 md:mb-3 group-hover:text-red-500 transition-colors text-center md:text-left"
+                  className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4 group-hover:text-red-400 transition-colors text-center md:text-left"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.3 + 0.1 * index }}
@@ -775,7 +807,7 @@ export default function Home() {
                   {service.title}
                 </motion.h3>
                 <motion.p
-                  className="text-sm md:text-base text-white/70 text-center md:text-left"
+                  className="text-base text-white/70 text-center md:text-left leading-relaxed"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.4 + 0.1 * index }}
@@ -793,14 +825,20 @@ export default function Home() {
       <motion.section
         ref={contactRef}
         id="contact"
-        className="py-8 md:py-20 mb-4 md:mb-10"
+        className="py-8 md:py-20 mb-4 md:mb-10 relative overflow-hidden"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0.2 }}
       >
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -left-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+        </div>
+
         <motion.div
-          className="bg-gradient-to-br from-gray-950 to-black rounded-xl p-4 md:p-10 shadow-2xl border border-red-900/20 mx-0 md:mx-0"
+          className="bg-gradient-to-br from-gray-950 to-black rounded-2xl p-4 md:p-10 shadow-2xl border border-red-900/20 mx-0 md:mx-0 relative z-10"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
@@ -814,16 +852,16 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <motion.div
-              className="inline-block px-4 py-1 bg-red-950/30 rounded-full border border-red-800/30 mb-3"
-              whileHover={{ scale: 1.05 }}
+              className="inline-block px-6 py-2 bg-gradient-to-r from-red-950/50 to-red-900/30 rounded-full border border-red-800/30 mb-3 backdrop-blur-sm"
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(185, 28, 28, 0.4)" }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <p className="text-sm text-red-500 font-medium tracking-wider">
+              <p className="text-sm text-red-400 font-medium tracking-wider">
                 CONTACT
               </p>
             </motion.div>
             <motion.h2
-              className="text-3xl md:text-4xl font-bold text-white text-center"
+              className="text-4xl md:text-5xl font-bold text-white text-center bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -832,7 +870,7 @@ export default function Home() {
               START YOUR JOURNEY
             </motion.h2>
             <motion.p
-              className="text-center text-white/70 max-w-2xl mt-2 md:mt-4 px-2"
+              className="text-center text-white/80 max-w-2xl mt-2 md:mt-4 px-2 text-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -844,28 +882,29 @@ export default function Home() {
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
             <motion.div
-              className="space-y-3 md:space-y-6"
+              className="space-y-4 md:space-y-6"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
               <motion.div
-                className="bg-gradient-to-br from-black/70 to-black/50 p-6 md:p-8 rounded-lg border border-red-900/20 flex flex-col items-center"
+                className="bg-gradient-to-br from-black/70 to-black/50 p-6 md:p-8 rounded-xl border border-red-900/20 flex flex-col items-center backdrop-blur-sm"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
                 whileHover={{
                   y: -5,
+                  scale: 1.02,
                   boxShadow: "0 20px 25px -5px rgba(155, 28, 28, 0.1)",
                 }}
               >
                 <div className="flex items-center justify-center mb-4 md:mb-6">
                   <motion.div
-                    className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-red-600/90 flex items-center justify-center"
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center shadow-lg"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
                     animate={{
@@ -887,42 +926,43 @@ export default function Home() {
                     />
                   </motion.div>
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-white text-center mb-3 md:mb-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-3 md:mb-4">
                   Book a Session via WhatsApp
                 </h3>
-                <p className="text-white/70 text-center mb-6 md:mb-8">
+                <p className="text-white/80 text-center mb-6 md:mb-8 text-base">
                   Chat directly with Charbel to discuss your training goals, schedule a session, or ask any questions about the programs offered.
                 </p>
                 <motion.a
                   href="https://wa.me/96171789664"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-3 md:py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold rounded-md hover:shadow-lg hover:shadow-red-900/20 transition-all"
-                  whileHover={{ scale: 1.03 }}
+                  className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-red-900/20 transition-all"
+                  whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                 >
-                  <Icon icon="mdi:whatsapp" className="text-white text-xl" />
+                  <Icon icon="mdi:whatsapp" className="text-white text-2xl" />
                   <span>CONTACT ON WHATSAPP</span>
                 </motion.a>
-                <p className="text-white/50 text-xs mt-4 text-center">
+                <p className="text-white/50 text-sm mt-4 text-center">
                   Phone: +961 71 789 664
                 </p>
               </motion.div>
 
               <motion.div
-                className="bg-gradient-to-br from-black/70 to-black/50 p-6 md:p-8 rounded-lg border border-red-900/20 flex flex-col items-center"
+                className="bg-gradient-to-br from-black/70 to-black/50 p-6 md:p-8 rounded-xl border border-red-900/20 flex flex-col items-center backdrop-blur-sm"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
                 viewport={{ once: true }}
                 whileHover={{
                   y: -5,
+                  scale: 1.02,
                   boxShadow: "0 20px 25px -5px rgba(155, 28, 28, 0.1)",
                 }}
               >
                 <div className="flex items-center justify-center mb-4 md:mb-6">
                   <motion.div
-                    className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-red-600/90 flex items-center justify-center"
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center shadow-lg"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
                     animate={{
@@ -944,24 +984,24 @@ export default function Home() {
                     />
                   </motion.div>
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-white text-center mb-3 md:mb-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-3 md:mb-4">
                   Follow on Instagram
                 </h3>
-                <p className="text-white/70 text-center mb-6 md:mb-8">
+                <p className="text-white/80 text-center mb-6 md:mb-8 text-base">
                   Follow Charbel on Instagram for training tips, competition updates, and behind-the-scenes content from the gym.
                 </p>
                 <motion.a
                   href="https://instagram.com/charbelfarahmma"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-3 md:py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold rounded-md hover:shadow-lg hover:shadow-red-900/20 transition-all"
-                  whileHover={{ scale: 1.03 }}
+                  className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-red-900/20 transition-all"
+                  whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                 >
-                  <Icon icon="mdi:instagram" className="text-white text-xl" />
+                  <Icon icon="mdi:instagram" className="text-white text-2xl" />
                   <span>VISIT INSTAGRAM</span>
                 </motion.a>
-                <p className="text-white/50 text-xs mt-4 text-center">
+                <p className="text-white/50 text-sm mt-4 text-center">
                   @charbelfarahmma
                 </p>
               </motion.div>
@@ -975,19 +1015,20 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <motion.div
-                className="bg-gradient-to-br from-black/80 to-black/60 p-3 md:p-8 rounded-lg border border-red-900/20"
+                className="bg-gradient-to-br from-black/80 to-black/60 p-6 md:p-8 rounded-xl border border-red-900/20 backdrop-blur-sm"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
                 whileHover={{
                   y: -5,
+                  scale: 1.02,
                   boxShadow: "0 20px 25px -5px rgba(155, 28, 28, 0.1)",
                 }}
               >
-                <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-5">
+                <div className="flex items-center gap-3 mb-4 md:mb-6">
                   <motion.div
-                    className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-red-900/30 flex items-center justify-center"
+                    className="w-10 h-10 rounded-full bg-gradient-to-br from-red-900/50 to-red-800/30 flex items-center justify-center border border-red-700/30"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
                     animate={{
@@ -1004,10 +1045,10 @@ export default function Home() {
                   >
                     <Icon
                       icon="mdi:map-marker"
-                      className="text-base md:text-xl text-red-500"
+                      className="text-xl text-red-400"
                     />
                   </motion.div>
-                  <h3 className="text-base md:text-xl font-bold text-white">
+                  <h3 className="text-xl md:text-2xl font-bold text-white">
                     Training Location
                   </h3>
                 </div>
@@ -1017,38 +1058,29 @@ export default function Home() {
                   transition={{ duration: 0.5, delay: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  <p className="text-white/70 mb-1">
-                    Charbel Farah MMA Training Center
+                  <p className="text-white/80 mb-2">
+                    Training Location
                   </p>
-                  <p className="text-white/70 mb-1">123 Fighter Avenue</p>
-                  <p className="text-white/70 mb-3 md:mb-6">Beirut, Lebanon</p>
-                </motion.div>
-                <motion.div
-                  className="w-full h-28 md:h-40 bg-black/50 rounded-lg flex items-center justify-center text-white/30 border border-red-900/20"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.7 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  MAP PLACEHOLDER
+                  <p className="text-white/80 mb-2">Kesrouane Area, Lebanon</p>
+                  <p className="text-white/80 mb-4 md:mb-6">Exact location will be discussed and confirmed with Charbel</p>
                 </motion.div>
               </motion.div>
 
               <motion.div
-                className="bg-gradient-to-br from-black/80 to-black/60 p-3 md:p-8 rounded-lg border border-red-900/20"
+                className="bg-gradient-to-br from-black/80 to-black/60 p-6 md:p-8 rounded-xl border border-red-900/20 backdrop-blur-sm"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
                 viewport={{ once: true }}
                 whileHover={{
                   y: -5,
+                  scale: 1.02,
                   boxShadow: "0 20px 25px -5px rgba(155, 28, 28, 0.1)",
                 }}
               >
-                <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-5">
+                <div className="flex items-center gap-3 mb-4 md:mb-6">
                   <motion.div
-                    className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-red-900/30 flex items-center justify-center"
+                    className="w-10 h-10 rounded-full bg-gradient-to-br from-red-900/50 to-red-800/30 flex items-center justify-center border border-red-700/30"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
                     animate={{
@@ -1065,46 +1097,26 @@ export default function Home() {
                   >
                     <Icon
                       icon="mdi:clock"
-                      className="text-base md:text-xl text-red-500"
+                      className="text-xl text-red-400"
                     />
                   </motion.div>
-                  <h3 className="text-base md:text-xl font-bold text-white">
-                    Training Hours
+                  <h3 className="text-xl md:text-2xl font-bold text-white">
+                    Training Schedule
                   </h3>
                 </div>
                 <motion.div
-                  className="space-y-2 md:space-y-3 text-white/70"
+                  className="space-y-3 text-white/80"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
                   viewport={{ once: true }}
                 >
-                  {[
-                    { day: "Monday - Friday", hours: "6:00 AM - 9:00 PM" },
-                    { day: "Saturday", hours: "8:00 AM - 6:00 PM" },
-                    { day: "Sunday", hours: "10:00 AM - 2:00 PM" },
-                  ].map((schedule, index) => (
-                    <motion.div
-                      key={schedule.day}
-                      className={`flex flex-col xs:flex-row justify-between items-start xs:items-center gap-1 xs:gap-0 ${index < 2 ? "border-b border-red-900/10 pb-2 md:pb-3" : ""}`}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-                      viewport={{ once: true }}
-                      whileHover={{ x: 5 }}
-                    >
-                      <span className="font-medium">{schedule.day}</span>
-                      <motion.span
-                        className="bg-red-900/20 px-2 md:px-3 py-1 rounded text-xs md:text-sm whitespace-nowrap"
-                        whileHover={{
-                          scale: 1.05,
-                          backgroundColor: "rgba(185, 28, 28, 0.3)",
-                        }}
-                      >
-                        {schedule.hours}
-                      </motion.span>
-                    </motion.div>
-                  ))}
+                  <p className="text-base mb-4">
+                    Training times will be discussed and agreed upon with Charbel based on your availability and goals. We offer flexible scheduling to accommodate your needs.
+                  </p>
+                  <p className="text-base">
+                    Contact Charbel to discuss your preferred training schedule and availability.
+                  </p>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -1113,7 +1125,7 @@ export default function Home() {
       </motion.section>
 
       {/* Footer */}
-      <footer className="py-3 md:py-10 px-4 md:px-0">
+      <footer className="py-3 md:py-10 px-4 md:px-0 relative z-10">
         <div className="max-w-full border-t border-red-900/20 pt-4 md:pt-8">
           <p className="text-white/60 text-center text-sm">
             © 2024 Charbel Farah MMA Training. All rights reserved.
