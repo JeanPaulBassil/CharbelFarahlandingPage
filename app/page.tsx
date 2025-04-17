@@ -40,7 +40,6 @@ export default function Home() {
   const achievementsRef = useRef<HTMLElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Function to handle smooth scrolling
   const scrollToSection = (elementRef: React.RefObject<HTMLElement>) => {
@@ -220,7 +219,7 @@ export default function Home() {
             scale: 1.02,
           }}
         >
-          {/* Video with parallax effect */}
+          {/* Fighter video with parallax effect */}
           <motion.div
             className="absolute inset-0 w-full h-full"
             initial={{ scale: 1.1 }}
@@ -238,14 +237,13 @@ export default function Home() {
               },
             }}
           >
-            <video 
-              ref={videoRef}
-              src="/WhatsApp Video Apr 17 2025.mp4"
-              className="absolute inset-0 w-full h-full object-cover object-center"
+            <video
+              src="/the hero video.mp4"
               autoPlay
               muted
               loop
               playsInline
+              className="object-cover object-center w-full h-full"
             />
           </motion.div>
 
@@ -370,7 +368,7 @@ export default function Home() {
             </div>
           </motion.div>
           <motion.div
-            className="flex-1 flex justify-center w-full"
+            className="flex-1 flex justify-center w-full mt-8 md:mt-0"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
@@ -413,6 +411,683 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
+      </motion.section>
+
+      {/* Achievements Section */}
+      <motion.section
+        ref={achievementsRef}
+        id="achievements"
+        className="py-8 md:py-20 relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -left-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <motion.div
+          className="flex flex-col items-center mb-4 md:mb-10 relative z-10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            className="inline-block px-6 py-2 bg-gradient-to-r from-red-950/50 to-red-900/30 rounded-full border border-red-800/30 mb-3 backdrop-blur-sm"
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(185, 28, 28, 0.4)" }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <p className="text-sm text-red-400 font-medium tracking-wider">
+              ACHIEVEMENTS
+            </p>
+          </motion.div>
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold text-white text-center bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            CHAMPIONSHIP RECORD
+          </motion.h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 relative z-10">
+          {[
+            {
+              title: "MMA",
+              icon: "mdi:sword-cross",
+              achievements: [
+                {
+                  medal: "G",
+                  title: "Asian MMA Champion 2016",
+                  subtitle: "Gold Medal",
+                },
+                {
+                  medal: "G",
+                  title: "Asian MMA Champion 2022",
+                  subtitle: "Gold Medal",
+                },
+                {
+                  medal: "G",
+                  title: "MMA National Champion",
+                  subtitle: "Gold Medal",
+                },
+                {
+                  medal: "B",
+                  title: "MMA World Championship",
+                  subtitle: "Bronze Medal",
+                },
+              ],
+            },
+            {
+              title: "BJJ & WRESTLING",
+              icon: "mdi:karate",
+              achievements: [
+                {
+                  medal: "G",
+                  title: "National Champion BJJ Gi",
+                  subtitle: "Gold Medal",
+                },
+                {
+                  medal: "G",
+                  title: "European Champion BJJ 2024",
+                  subtitle: "Gold Medal",
+                },
+                {
+                  medal: "S",
+                  title: "Mediterranean BJJ Competition",
+                  subtitle: "Silver Medal (2022)",
+                },
+                {
+                  medal: "G",
+                  title: "Wrestling Nationals",
+                  subtitle: "Freestyle & Greco-Roman Gold",
+                },
+              ],
+            },
+            {
+              title: "KICKBOXING & SANDA",
+              icon: "mdi:boxing-glove",
+              achievements: [
+                {
+                  medal: "G",
+                  title: "Lebanese Sanda Championship 2021",
+                  subtitle: "Gold Medal",
+                },
+                {
+                  medal: "B",
+                  title: "Lebanese Sanda Cup 2021",
+                  subtitle: "Bronze Medal",
+                },
+                {
+                  medal: "G",
+                  title: "Kick Boxing Championship 2025",
+                  subtitle: "Gold Medal",
+                },
+              ],
+            },
+            {
+              title: "EDUCATION & HONORS",
+              icon: "mdi:school",
+              achievements: [
+                {
+                  medal: "S",
+                  title: "Second President Athletic Scholarship",
+                  subtitle: "2023-2024 Awardee",
+                },
+                {
+                  medal: "J",
+                  title: "Judoka Experience",
+                  subtitle: "2-3 years training",
+                },
+              ],
+            },
+          ].map((category, categoryIndex) => (
+            <motion.div
+              key={category.title}
+              className="space-y-6 bg-black/30 p-6 rounded-2xl backdrop-blur-sm border border-white/5 hover:border-red-900/30 transition-all"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 * categoryIndex }}
+              viewport={{ once: true, amount: 0.1 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <motion.div
+                className="flex items-center gap-3"
+                whileHover={{ x: 5 }}
+              >
+                <motion.div
+                  className="w-12 h-12 rounded-full bg-gradient-to-br from-red-900/50 to-red-800/30 flex items-center justify-center border border-red-700/30"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Icon icon={category.icon} className="text-2xl text-red-400" />
+                </motion.div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                  {category.title}
+                </h3>
+              </motion.div>
+              <ul className="space-y-3">
+                {category.achievements.map((achievement, index) => (
+                  <motion.li
+                    key={achievement.title}
+                    className="bg-black/40 p-4 rounded-xl flex items-center gap-4 border border-white/5 hover:border-red-900/30 transition-all group"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.3 + 0.1 * index }}
+                    viewport={{ once: true, amount: 0.1 }}
+                    whileHover={{ x: 5, scale: 1.02 }}
+                  >
+                    <motion.span
+                      className={`w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-lg group-hover:scale-110 transition-transform ${
+                        achievement.medal === "G"
+                          ? "bg-gradient-to-br from-yellow-400 to-yellow-600 text-black"
+                          : achievement.medal === "S"
+                            ? "bg-gradient-to-br from-gray-300 to-gray-100 text-black"
+                            : "bg-gradient-to-br from-amber-600 to-amber-400 text-white"
+                      }`}
+                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      whileTap={{ scale: 0.9 }}
+                      animate={{
+                        boxShadow:
+                          achievement.medal === "G"
+                            ? [
+                                "0px 0px 0px rgba(234, 179, 8, 0.3)",
+                                "0px 0px 10px rgba(234, 179, 8, 0.5)",
+                                "0px 0px 0px rgba(234, 179, 8, 0.3)",
+                              ]
+                            : achievement.medal === "S"
+                              ? [
+                                  "0px 0px 0px rgba(156, 163, 175, 0.3)",
+                                  "0px 0px 10px rgba(156, 163, 175, 0.5)",
+                                  "0px 0px 0px rgba(156, 163, 175, 0.3)",
+                                ]
+                              : [
+                                  "0px 0px 0px rgba(180, 83, 9, 0.3)",
+                                  "0px 0px 10px rgba(180, 83, 9, 0.5)",
+                                  "0px 0px 0px rgba(180, 83, 9, 0.3)",
+                                ],
+                      }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 2,
+                        repeatType: "reverse",
+                      }}
+                    >
+                      {achievement.medal}
+                    </motion.span>
+                    <div>
+                      <p className="font-medium text-white text-base">
+                        {achievement.title}
+                      </p>
+                      <p className="text-sm text-white/60">
+                        {achievement.subtitle}
+                      </p>
+                    </div>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Training Services */}
+      <motion.section
+        ref={servicesRef}
+        id="services"
+        className="py-8 md:py-20 bg-gradient-to-r from-red-950 to-black rounded-2xl p-4 md:p-10 shadow-2xl mx-0 md:mx-0 relative overflow-hidden"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <motion.div
+          className="flex flex-col items-center mb-4 md:mb-10 relative z-10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            className="inline-block px-6 py-2 bg-gradient-to-r from-red-950/50 to-red-900/30 rounded-full border border-red-800/30 mb-3 backdrop-blur-sm"
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(185, 28, 28, 0.4)" }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <p className="text-sm text-red-400 font-medium tracking-wider">
+              SERVICES
+            </p>
+          </motion.div>
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold text-white text-center bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            TRAINING PROGRAMS
+          </motion.h2>
+          <motion.p
+            className="text-center text-white/80 max-w-2xl mt-2 md:mt-4 px-2 text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            Personalized training programs designed to help you reach your
+            goals, whether you&apos;re a beginner or a competitive fighter.
+          </motion.p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 relative z-10">
+          {[
+            {
+              icon: "mdi:sword-cross",
+              title: "Mixed Martial Arts",
+              description:
+                "Comprehensive training combining striking, grappling, and ground techniques. Learn to seamlessly transition between different fighting styles and develop a complete skill set.",
+            },
+            {
+              icon: "mdi:karate",
+              title: "Brazilian Jiu-Jitsu",
+              description:
+                "Master the art of ground fighting, submissions, and positional control. Available for both Gi and No-Gi training styles for competitors and hobbyists alike.",
+            },
+            {
+              icon: "mdi:boxing-glove",
+              title: "Kickboxing",
+              description:
+                "Develop powerful striking techniques with hands and feet. Focus on speed, precision, and effective combinations that work in both competition and self-defense scenarios.",
+            },
+            {
+              icon: "mdi:weight-lifter",
+              title: "Wrestling",
+              description:
+                "Learn takedowns, control, and defensive techniques from freestyle and Greco-Roman wrestling. Build explosive strength and improve your balance and core stability.",
+            },
+            {
+              icon: "mdi:dumbbell",
+              title: "Conditioning",
+              description:
+                "Fighter-specific strength and conditioning programs designed to improve your cardio, power, and recovery. Train like a champion to perform like one.",
+            },
+            {
+              icon: "mdi:human-handsup",
+              title: "Private Coaching",
+              description:
+                "Personalized one-on-one sessions tailored to your specific goals, whether you&apos;re preparing for competition or focusing on personal development.",
+            },
+          ].map((service, index) => (
+            <motion.div
+              key={service.title}
+              className="bg-gradient-to-br from-black/60 to-black/40 rounded-xl p-6 md:p-8 border border-red-900/20 hover:border-red-600/50 hover:shadow-red-900/5 hover:shadow-lg transition-all group backdrop-blur-sm"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+              viewport={{ once: true, amount: 0.1 }}
+              whileHover={{
+                y: -10,
+                scale: 1.02,
+                boxShadow: "0 20px 25px -5px rgba(155, 28, 28, 0.15)",
+              }}
+            >
+              <div className="flex flex-col items-center md:items-start">
+                <motion.div
+                  className="mb-4 md:mb-6 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-red-600 to-red-800 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                  animate={{
+                    boxShadow: [
+                      "0px 0px 0px rgba(220, 38, 38, 0.3)",
+                      "0px 0px 15px rgba(220, 38, 38, 0.3)",
+                      "0px 0px 0px rgba(220, 38, 38, 0.3)",
+                    ],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    repeatType: "reverse",
+                    delay: index * 0.2,
+                  }}
+                >
+                  <Icon icon={service.icon} className="text-2xl md:text-3xl" />
+                </motion.div>
+                <motion.h3
+                  className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4 group-hover:text-red-400 transition-colors text-center md:text-left"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.3 + 0.1 * index }}
+                  viewport={{ once: true }}
+                >
+                  {service.title}
+                </motion.h3>
+                <motion.p
+                  className="text-base text-white/70 text-center md:text-left leading-relaxed"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.4 + 0.1 * index }}
+                  viewport={{ once: true }}
+                >
+                  {service.description}
+                </motion.p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Call to Action / Contact */}
+      <motion.section
+        ref={contactRef}
+        id="contact"
+        className="py-8 md:py-20 mb-4 md:mb-10 relative overflow-hidden"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -left-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-red-900/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <motion.div
+          className="bg-gradient-to-br from-gray-950 to-black rounded-2xl p-4 md:p-10 shadow-2xl border border-red-900/20 mx-0 md:mx-0 relative z-10"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            className="flex flex-col items-center mb-4 md:mb-10"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              className="inline-block px-6 py-2 bg-gradient-to-r from-red-950/50 to-red-900/30 rounded-full border border-red-800/30 mb-3 backdrop-blur-sm"
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(185, 28, 28, 0.4)" }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <p className="text-sm text-red-400 font-medium tracking-wider">
+                CONTACT
+              </p>
+            </motion.div>
+            <motion.h2
+              className="text-4xl md:text-5xl font-bold text-white text-center bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              START YOUR JOURNEY
+            </motion.h2>
+            <motion.p
+              className="text-center text-white/80 max-w-2xl mt-2 md:mt-4 px-2 text-lg"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              Ready to transform your training and take your skills to the next
+              level? Contact Charbel Farah for session rates and availability.
+              Limited spots available for serious athletes.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+            <motion.div
+              className="space-y-4 md:space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <motion.div
+                className="bg-gradient-to-br from-black/70 to-black/50 p-6 md:p-8 rounded-xl border border-red-900/20 flex flex-col items-center backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                viewport={{ once: true }}
+                whileHover={{
+                  y: -5,
+                  scale: 1.02,
+                  boxShadow: "0 20px 25px -5px rgba(155, 28, 28, 0.1)",
+                }}
+              >
+                <div className="flex items-center justify-center mb-4 md:mb-6">
+                  <motion.div
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center shadow-lg"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    animate={{
+                      boxShadow: [
+                        "0px 0px 0px rgba(220, 38, 38, 0.3)",
+                        "0px 0px 15px rgba(220, 38, 38, 0.5)",
+                        "0px 0px 0px rgba(220, 38, 38, 0.3)",
+                      ],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2,
+                      repeatType: "reverse",
+                    }}
+                  >
+                    <Icon
+                      icon="mdi:whatsapp"
+                      className="text-white text-3xl md:text-4xl"
+                    />
+                  </motion.div>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-3 md:mb-4">
+                  Book a Session via WhatsApp
+                </h3>
+                <p className="text-white/80 text-center mb-6 md:mb-8 text-base">
+                  Chat directly with Charbel to discuss your training goals, schedule a session, or ask any questions about the programs offered.
+                </p>
+                <motion.a
+                  href="https://wa.me/96171789664"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-red-900/20 transition-all"
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <Icon icon="mdi:whatsapp" className="text-white text-2xl" />
+                  <span>CONTACT ON WHATSAPP</span>
+                </motion.a>
+                <p className="text-white/50 text-sm mt-4 text-center">
+                  Phone: +961 71 789 664
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="bg-gradient-to-br from-black/70 to-black/50 p-6 md:p-8 rounded-xl border border-red-900/20 flex flex-col items-center backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                viewport={{ once: true }}
+                whileHover={{
+                  y: -5,
+                  scale: 1.02,
+                  boxShadow: "0 20px 25px -5px rgba(155, 28, 28, 0.1)",
+                }}
+              >
+                <div className="flex items-center justify-center mb-4 md:mb-6">
+                  <motion.div
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center shadow-lg"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    animate={{
+                      boxShadow: [
+                        "0px 0px 0px rgba(220, 38, 38, 0.3)",
+                        "0px 0px 15px rgba(220, 38, 38, 0.5)",
+                        "0px 0px 0px rgba(220, 38, 38, 0.3)",
+                      ],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2,
+                      repeatType: "reverse",
+                    }}
+                  >
+                    <Icon
+                      icon="mdi:instagram"
+                      className="text-white text-3xl md:text-4xl"
+                    />
+                  </motion.div>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-3 md:mb-4">
+                  Follow on Instagram
+                </h3>
+                <p className="text-white/80 text-center mb-6 md:mb-8 text-base">
+                  Follow Charbel on Instagram for training tips, competition updates, and behind-the-scenes content from the gym.
+                </p>
+                <motion.a
+                  href="https://instagram.com/charbelfarahmma"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-red-900/20 transition-all"
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <Icon icon="mdi:instagram" className="text-white text-2xl" />
+                  <span>VISIT INSTAGRAM</span>
+                </motion.a>
+                <p className="text-white/50 text-sm mt-4 text-center">
+                  @charbelfarahmma
+                </p>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              className="space-y-6 md:space-y-8"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <motion.div
+                className="bg-gradient-to-br from-black/80 to-black/60 p-6 md:p-8 rounded-xl border border-red-900/20 backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                viewport={{ once: true }}
+                whileHover={{
+                  y: -5,
+                  scale: 1.02,
+                  boxShadow: "0 20px 25px -5px rgba(155, 28, 28, 0.1)",
+                }}
+              >
+                <div className="flex items-center gap-3 mb-4 md:mb-6">
+                  <motion.div
+                    className="w-10 h-10 rounded-full bg-gradient-to-br from-red-900/50 to-red-800/30 flex items-center justify-center border border-red-700/30"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    animate={{
+                      boxShadow: [
+                        "0px 0px 0px rgba(220, 38, 38, 0.3)",
+                        "0px 0px 10px rgba(220, 38, 38, 0.3)",
+                        "0px 0px 0px rgba(220, 38, 38, 0.3)",
+                      ],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2,
+                    }}
+                  >
+                    <Icon
+                      icon="mdi:map-marker"
+                      className="text-xl text-red-400"
+                    />
+                  </motion.div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white">
+                    Training Location
+                  </h3>
+                </div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <p className="text-white/80 mb-2">
+                    Training Location
+                  </p>
+                  <p className="text-white/80 mb-2">Kesrouane Area, Lebanon</p>
+                  <p className="text-white/80 mb-4 md:mb-6">Exact location will be discussed and confirmed with Charbel</p>
+                </motion.div>
+              </motion.div>
+
+              <motion.div
+                className="bg-gradient-to-br from-black/80 to-black/60 p-6 md:p-8 rounded-xl border border-red-900/20 backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                viewport={{ once: true }}
+                whileHover={{
+                  y: -5,
+                  scale: 1.02,
+                  boxShadow: "0 20px 25px -5px rgba(155, 28, 28, 0.1)",
+                }}
+              >
+                <div className="flex items-center gap-3 mb-4 md:mb-6">
+                  <motion.div
+                    className="w-10 h-10 rounded-full bg-gradient-to-br from-red-900/50 to-red-800/30 flex items-center justify-center border border-red-700/30"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    animate={{
+                      boxShadow: [
+                        "0px 0px 0px rgba(220, 38, 38, 0.3)",
+                        "0px 0px 10px rgba(220, 38, 38, 0.3)",
+                        "0px 0px 0px rgba(220, 38, 38, 0.3)",
+                      ],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2,
+                    }}
+                  >
+                    <Icon
+                      icon="mdi:clock"
+                      className="text-xl text-red-400"
+                    />
+                  </motion.div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white">
+                    Training Schedule
+                  </h3>
+                </div>
+                <motion.div
+                  className="space-y-3 text-white/80"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  viewport={{ once: true }}
+                >
+                  <p className="text-base mb-4">
+                    Training times will be discussed and agreed upon with Charbel based on your availability and goals. We offer flexible scheduling to accommodate your needs.
+                  </p>
+                  <p className="text-base">
+                    Contact Charbel to discuss your preferred training schedule and availability.
+                  </p>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.div>
       </motion.section>
 
       {/* Footer */}

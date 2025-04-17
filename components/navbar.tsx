@@ -130,12 +130,14 @@ export const Navbar = () => {
           >
             <Button
               as={Link}
-              className="text-sm font-bold bg-gradient-to-br from-red-600 to-red-800 text-white hover:shadow-red-900/30 hover:shadow-lg transition-shadow"
-              href="#contact"
-              onClick={(e) => handleSmoothScroll(e, "#contact")}
+              className="text-sm font-bold bg-gradient-to-br from-red-600 to-red-800 text-white hover:shadow-red-900/30 hover:shadow-lg transition-shadow flex items-center gap-2"
+              href="https://wa.me/96171789664"
+              target="_blank"
+              rel="noopener noreferrer"
               variant="solid"
               radius="sm"
             >
+              <Icon icon="mdi:whatsapp" className="text-white text-sm" />
               BOOK A SESSION
             </Button>
           </motion.div>
@@ -168,6 +170,23 @@ export const Navbar = () => {
               </NavbarMenuItem>
             </motion.div>
           ))}
+        </div>
+        <div className="mx-4 mt-6">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.5 }}
+          >
+            <Link
+              href="https://wa.me/96171789664"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-red-900/20 transition-all"
+            >
+              <Icon icon="mdi:whatsapp" className="text-white text-xl" />
+              BOOK A SESSION
+            </Link>
+          </motion.div>
         </div>
       </NavbarMenu>
     </HeroUINavbar>
